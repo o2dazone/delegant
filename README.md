@@ -1,0 +1,4 @@
+delegant
+========
+
+Event delegation library
