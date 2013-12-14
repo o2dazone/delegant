@@ -8,7 +8,20 @@ An event delegation library
 - You're tired of setting up custom event delegation scaffolding for all your projects.
 
 ## Usage
-Add a data attribute "data-del-<evt type>" property to your HTML. The value should be the name of your function you're registering in the Javascript. Functions can be namespaced if need be. In your Javascript, bind an event with delegant to the body (delegant.bind), and register an event with the value of your data attribute (data.register)
+Add a data attribute "data-dele-<evt type>" property to your HTML. The value should be the name of your function you're registering in the Javascript. Functions can be namespaced if need be. 
+```html
+<a href="#" data-dele-click="hello.world">Hello, World.</a>
+```
+
+In your Javascript, bind an event with delegant to the body (delegant.bind), and register an event with the value of your data attribute (data.register)
+```javascript
+delegant.bind('body','click'); // you're binding a click event on the body
+delegant.register('hello.world', function(element, evt) {
+  console.log('Hello, world.');
+  console.log('You clicked on ' + element);
+  console.log('With the event type ' + evt.type);
+});
+```
 
 ## How To
 Take a look at the [examples/simple.html](examples/simple.html) and [examples/complex.html](examples/complex.html) to get working examples.
