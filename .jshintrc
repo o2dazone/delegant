@@ -1,0 +1,13 @@
+{
+    "browser"  : true,
+    "predef"   : ["delegant"],
+    "devel"    : true,   // Allow developments statements e.g. `console.log();`.
+    "boss"     : true,   // Tolerate assignments inside if, for & while. Usually conditions & loops are for comparison, not assignments.
+    "bitwise"  : true,   // Prohibit bitwise operators (&, |, ^, etc.).
+    "eqeqeq"   : true,   // Require triple equals i.e. `===`.
+    "eqnull"   : false,  // Tolerate use of `== null`.
+    "evil"     : false,  // Tolerate use of `eval`.
+    "trailing" : true,   // Prohibit trailing whitespaces.
+    "white"    : false,  // Check against strict whitespace and indentation rules.
+    "indent"   : 2       // Specify indentation spacing
+}

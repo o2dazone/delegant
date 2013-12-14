@@ -1,0 +1,19 @@
+<!doctype html>
+<title>Delegant</title>
+<head>
+  <style>div{border:1px solid #000;}</style>
+  <script type="text/javascript" src="../delegant.js"></script>
+</head>
+<body>
+<div data-dele-click="moo">
+  <a href="#" data-dele-click="clickFunc" data-dele-mouseover="foo.hovering">I'm clicking on this thing.</a>
+  <a href="#" data-dele-click="clickFunc" data-dele-mouseover="foo.hovering">Here's another thing I'm clicking on.</a>
+  <a href="#" data-dele-click="clickFunc">Whoa! Check that out!!!!</a>
+  <a href="#" data-dele-click="clickFunc">Meh.</a>
+</div>
+
+<input type="text" data-dele-focus="foo.focus" data-dele-blur="foo.blur" value="Change me!" />
+
+<script type="text/javascript" src="complex.js"></script>
+</body>
+</html>
