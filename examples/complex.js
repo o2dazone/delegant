@@ -26,6 +26,4 @@
     console.log('You just hovered over an ' + el.tagName + ' tag.');
   });
 
-
-
 }());

@@ -37,7 +37,7 @@
       }
     }
 
-    var delegant = {
+    delegant = {
       bind: function(el,evt) {
         d.querySelector(el).addEventListener(
           evt,
