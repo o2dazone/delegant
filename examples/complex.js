@@ -15,13 +15,11 @@
   });
 
   delegant.register('foo.focus', function(el){
-    if (el.tagName === 'INPUT')
-      el.value = '';
+    el.value = '';
   });
 
   delegant.register('foo.blur', function(el){
-    if (el.tagName === 'INPUT' && el.value === '')
-      el.value = 'Dont leave this input empty!';
+    if (el.value === '') el.value = 'Dont leave this input empty!';
   });
 
   delegant.register('foo.hovering', function(el){
