@@ -1,10 +1,11 @@
 (function(){
   'use strict';
 
-  delegant.bind('body','click');
-  delegant.bind('body','focus');
-  delegant.bind('body','blur');
+  // Single-event binding
   delegant.bind('body','mouseover');
+
+  // Multi-event binding
+  delegant.bind('body', ['click', 'focus', 'blur']);
 
   delegant.register('clickFunc', function(el, evt){
     console.log('innerHTML: ' + el.innerHTML + '\nEvent Type: ' + evt.type);
