@@ -23,6 +23,22 @@ delegant.register('hello.world', function(element, evt) {
 });
 ```
 
+You can extend this to multiple events on multiple elements
+```html
+<a href="#" data-dele-mouseover="events.mouseover" data-dele-click="events.click">So many events!</a>
+```
+
+```javascript
+delegant.bind('body','click');
+delegant.bind('body','mouseover');
+delegant.register('events.mouseover', function() {
+  console.log('Im mousing over!');
+});
+delegant.register('events.click', function() {
+  console.log('Im clicking!');
+});
+```
+
 ## How To
 Take a look at the [examples/simple.html](examples/simple.html) and [examples/complex.html](examples/complex.html) to get working examples.
 
