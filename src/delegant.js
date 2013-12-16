@@ -42,22 +42,21 @@
         }
       }
 
+      function addListener(el,evt) {
+        d.querySelector(el).addEventListener(
+          evt,
+          (function(e){evtFunc(e);}),
+          true
+        );
+      }
+
       delegant = {
         bind: function(el,evt) {
-          var _this = this;
           return typeof evt === 'string' ?
-                  this.addListener(el,evt) :
-                  evt.forEach(function(evt) {
-                    _this.addListener(el,evt);
-                  });
-        },
-
-        addListener: function(el,evt) {
-          d.querySelector(el).addEventListener(
-            evt,
-            (function(e){evtFunc(e);}),
-            true
-          );
+            addListener(el,evt) :
+            evt.forEach(function(evt) {
+              addListener(el,evt);
+            });
         },
 
         register: function(name, func) {
