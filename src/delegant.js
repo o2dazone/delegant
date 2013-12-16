@@ -1,6 +1,5 @@
 /*!
- * Delegant 0.1
- * Written by Brandon Murry
+ * Delegant
 */
 
 /* AMD boilerplate from:

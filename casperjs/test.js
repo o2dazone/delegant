@@ -2,7 +2,7 @@ casper.test.begin('tests', 5, function suite(test){
   var msg;
 
   // load test.html
-  casper.start('test.html', function() {
+  casper.start('casperjs/test.html', function() {
     this.evaluate(function(){
       delegant.bind('body','click');
       delegant.bind('body',['mouseover']);
