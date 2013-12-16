@@ -5,7 +5,7 @@ casper.test.begin('tests', 5, function suite(test){
   casper.start('test.html', function() {
     this.evaluate(function(){
       delegant.bind('body','click');
-      delegant.bind('body','mouseover');
+      delegant.bind('body',['mouseover']);
 
       delegant.register('foo', function(){console.log('foo');});
       delegant.register('foo.bar', function(){console.log('bar');});
