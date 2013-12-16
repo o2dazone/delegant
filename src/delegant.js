@@ -1,7 +1,6 @@
 /*!
  * Delegant 0.1
  * Written by Brandon Murry
- *
 */
 
 (function(w,d){
