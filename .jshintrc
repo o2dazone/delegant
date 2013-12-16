@@ -1,6 +1,6 @@
 {
     "browser"  : true,
-    "predef"   : ["delegant","define","exports","module"],
+    "predef"   : ["delegant","define","exports","module","casper"],
     "devel"    : true,   // Allow developments statements e.g. `console.log();`.
     "boss"     : true,   // Tolerate assignments inside if, for & while. Usually conditions & loops are for comparison, not assignments.
     "bitwise"  : true,   // Prohibit bitwise operators (&, |, ^, etc.).

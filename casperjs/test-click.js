@@ -1,16 +1,13 @@
-casper.test.begin('tests', 5, function suite(test){
+casper.test.begin('tests', 4, function suite(test){
+  'use strict';
   var msg;
 
-  // load test.html
   casper.start('casperjs/test.html', function() {
     this.evaluate(function(){
       delegant.bind('body','click');
-      delegant.bind('body',['mouseover']);
-
       delegant.register('foo', function(){console.log('foo');});
       delegant.register('foo.bar', function(){console.log('bar');});
       delegant.register('foo.baz', function(){console.log('baz');});
-      delegant.register('foo.moo', function(){console.log('moo');});
     });
   })
 
@@ -35,12 +32,6 @@ casper.test.begin('tests', 5, function suite(test){
   .then(function() {
     this.clickLabel('Fire foo.baz');
     test.assertEquals(msg, 'baz');
-    msg = null;
-  })
-
-  .then(function() {
-    this.mouseEvent('mouseover', '.moo');
-    test.assertEquals(msg, 'moo');
     msg = null;
   })
 

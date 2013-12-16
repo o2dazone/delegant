@@ -1,9 +1,14 @@
 module.exports = function(grunt) {
   'use strict';
-  // Project configuration.
+
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     casperjs: {
+      options: {
+        async: {
+          parallel: true
+        }
+      },
       files: ['casperjs/*.js']
     },
     uglify: {
@@ -16,7 +21,6 @@ module.exports = function(grunt) {
       }
     }
   });
-
 
   grunt.loadNpmTasks('grunt-casperjs');
   grunt.loadNpmTasks('grunt-contrib-uglify');

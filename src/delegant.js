@@ -20,8 +20,7 @@
 
       var
         evtTarget,
-        evtType,
-        evtObj,
+        obj,
         fn = {}
       ;
 
@@ -31,28 +30,26 @@
 
       function evtFunc(e) {
         evtTarget = e.target;
-        evtType = e.type;
 
-        if ((evtObj = evtTarget.dataset['dele' + capitalize(evtType)])) {
-          if ((evtObj.indexOf('.')+1)) {
-            evtObj = evtObj.split('.');
-            evtObj = fn[evtObj[0]][evtObj[1]];
-          } else {
-            evtObj = fn[evtObj];
-          }
+        // "obj" is being reassigned numerous times in this function to save memory allocation
+        if ((obj = evtTarget.dataset['dele' + capitalize(e.type)])) {
+          obj = (obj.indexOf('.')+1) ?
+                   fn[obj.split('.')[0]][obj.split('.')[1]] :
+                   fn[obj];
 
           e.preventDefault();
-          evtObj(evtTarget, e);
+          obj(evtTarget, e);
         }
       }
 
       delegant = {
         bind: function(el,evt) {
           var _this = this;
-          return typeof evt === 'string' ? this.addListener(el,evt)
-            : evt.forEach(function(evt) {
-              _this.addListener(el,evt);
-            });
+          return typeof evt === 'string' ?
+                  this.addListener(el,evt) :
+                  evt.forEach(function(evt) {
+                    _this.addListener(el,evt);
+                  });
         },
 
         addListener: function(el,evt) {
