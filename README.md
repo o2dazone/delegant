@@ -23,14 +23,14 @@ delegant.register('hello.world', function(element, evt) {
 });
 ```
 
-You can extend this to multiple events on multiple elements
+You can extend this to multiple events (via an array) on multiple elements
 ```html
 <a href="#" data-dele-mouseover="events.mouseover" data-dele-click="events.click">So many events!</a>
 ```
 
 ```javascript
-delegant.bind('body','click');
-delegant.bind('body','mouseover');
+delegant.bind('body',['click', 'mouseover']);
+
 delegant.register('events.mouseover', function() {
   console.log('Im mousing over!');
 });
