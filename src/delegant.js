@@ -2,21 +2,19 @@
  * Delegant
 */
 
-/* AMD boilerplate from:
- * https://gist.github.com/fitzgen/951178
-*/
-(typeof define === "function"
- ? define
- : function (_, f) {
-     if ( typeof exports === "object" ) {
-         f(exports);
-     } else {
-         f(this);
-     }
- })(["exports"], function (exports) {
+(function(w,d){
+  'use strict';
 
-  (function(w,d){
-    'use strict';
+  /* AMD boilerplate from:
+   * https://gist.github.com/fitzgen/951178
+  */
+  (typeof define === 'function' ? define : function (_, f) {
+    if ( typeof exports === 'object' ) {
+      f(exports);
+    } else {
+      f(this);
+    }
+  })(['exports'], function (exports) {
 
     var delegant = (function() {
 
@@ -71,12 +69,12 @@
             fn[name[0]] = fn[name[0]] || {};
             fn[name[0]][name[1]] = func;
           } else {
-            fn[name] = func; //store the function into the delegant function object
+            fn[name] = func;
           }
         }
       };
 
       return w.delegant = delegant;
     }());
-  }(window, document));
- });
+  });
+}(window, document));
