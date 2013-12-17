@@ -15,7 +15,7 @@
     console.log('enter the moo');
   });
 
-  delegant.register('foo.focus', function(el){
+  delegant.register('foo.focus.whoa', function(el){
     el.value = '';
   });
 
@@ -25,6 +25,10 @@
 
   delegant.register('foo.hovering', function(el){
     console.log('You just hovered over an ' + el.tagName + ' tag.');
+  });
+
+  delegant.register('whoa.nice.test.wee', function(){
+    console.log('nice test');
   });
 
 }());

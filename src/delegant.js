@@ -21,6 +21,7 @@
       var
         evtTarget,
         obj,
+        base, lname,
         fn = {}
       ;
 
@@ -28,17 +29,22 @@
         return str.charAt(0).toUpperCase() + str.slice(1);
       }
 
+      function findObj (obj, names) {
+        for (var i = 0, len = names.length; i < len; i++) {
+          obj = obj[names[i]];
+          if (typeof(obj) === 'function' && i === len-1) return obj; // super hacky method of detecting its the last function im going to developer hell
+        }
+      }
+
       function evtFunc(e) {
         evtTarget = e.target;
 
-        // "obj" is being reassigned numerous times in this function to save memory allocation
+        // overriding "obj" to save on allocation
         if ((obj = evtTarget.dataset['dele' + capitalize(e.type)])) {
-          obj = (obj.indexOf('.')+1) ?
-                   fn[obj.split('.')[0]][obj.split('.')[1]] :
-                   fn[obj];
-
-          e.preventDefault();
-          obj(evtTarget, e);
+          if (obj = findObj(fn, obj.split('.'))) {
+            e.preventDefault();
+            obj(evtTarget, e);
+          }
         }
       }
 
@@ -59,14 +65,19 @@
             });
         },
 
-        register: function(name, func) {
-          if ((name.indexOf('.')+1)) {
-            name = name.split('.');
-            fn[name[0]] = fn[name[0]] || {};
-            fn[name[0]][name[1]] = func;
-          } else {
-            fn[name] = func;
+        register: function(name, func){
+          name = name.split('.');
+          base = fn;
+          lname = arguments.length === 2 ?
+                  name.pop() :
+                  false;
+
+          for (var i = 0, len = name.length; i < len; i++) {
+            base = base[name[i]] = base[name[i]] || {};
           }
+
+          if (lname) base = base[lname] = func;
+          base = fn;
         }
       };
 

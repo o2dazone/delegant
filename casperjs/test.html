@@ -4,9 +4,17 @@
   <script type="text/javascript" src="../src/delegant.js"></script>
 </head>
 <body>
+  <!-- a regular click event -->
   <p data-dele-click="foo">Fire foo</p>
+
+  <!-- a loaded node with lots of events -->
   <a href="#" class="moo" data-dele-click="foo.bar" data-dele-mouseover="foo.moo" data-dele-focus="bloo" data-dele-blur="merp.poo">Fire foo.bar</a>
-  <p data-dele-click="foo.baz">Fire foo.baz</p>
+
+  <!-- namespacing -->
+  <p data-dele-click="foo.bar.baz.qux.quux.corge.grault">Fire multi</p>
+
+
+  <!-- does nothing -->
   <p class="nothing">Dont fire anything</p>
 </body>
 </html>

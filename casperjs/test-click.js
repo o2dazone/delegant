@@ -5,9 +5,10 @@ casper.test.begin('tests', 4, function suite(test){
   casper.start('casperjs/test.html', function() {
     this.evaluate(function(){
       delegant.bind('body','click');
-      delegant.register('foo', function(){console.log('foo');});
-      delegant.register('foo.bar', function(){console.log('bar');});
-      delegant.register('foo.baz', function(){console.log('baz');});
+      delegant.register('foo',                                function(){console.log('foo');});
+      delegant.register('foo.bar',                            function(){console.log('bar');});
+      delegant.register('foo.bar.baz.qux.quux.corge.grault',  function(){console.log('quux');});
+      delegant.register('whoa.nice.test',                     function(){console.log('yeee');});
     });
   })
 
@@ -30,8 +31,8 @@ casper.test.begin('tests', 4, function suite(test){
   })
 
   .then(function() {
-    this.clickLabel('Fire foo.baz');
-    test.assertEquals(msg, 'baz');
+    this.clickLabel('Fire multi');
+    test.assertEquals(msg, 'quux');
     msg = null;
   })
 
